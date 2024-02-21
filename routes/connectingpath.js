@@ -40,6 +40,25 @@ router.get("/visitor",auth, isVisitor ,(req,res) =>{
         message: "wellcome to the page ! if you come here then buy a course"
     })
 })
+router.get("/userid", auth, (req,res)=>{
+    try{
+        const id= req.user.id;
+        console.log(id);
+        res.status(200).json({
+            success: true,
+            message: "id is found and here it is",
+            id: id
+        })
+
+    }
+    catch(err){
+        res.status(500).json({
+            success:false,
+            message: err.message,
+            message:" id not in the token/cookei"
+        })
+    }
+})
 
 
 

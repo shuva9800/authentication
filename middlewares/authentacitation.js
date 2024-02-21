@@ -6,10 +6,14 @@ require("dotenv").config();
 
 exports.auth = (req,res,next) => {
     try{
-        // extract jwt token from request body
-        const token = req.body.token;
+        // console.log("body" ,req.body.token);
+        // console.log("cookei" , req.cookies.shuva);
+        // console.log("header", req.header("Authorization"));
 
-        if(!token){
+        // extract jwt token from request body
+        const token = req.body.shuva || req.cookies.shuva || req.header("Authorization").replace('Bearer ', '');
+
+        if(!token || token=== undefined){
             return res.status(404).json({
                 success: false,
                 message:"token missing"

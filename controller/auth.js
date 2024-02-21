@@ -81,7 +81,7 @@ try{
       expiresIn: "5hr",
     });
 
-    user = user.toObject();//find out why we need to create user to object where user is alraedy object
+    user = user.toObject();//find out why we need to create user to object where user is alraedy object?
     user.token = token;
     user.password= undefined;
 
@@ -89,7 +89,7 @@ try{
       expires: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000),
       httpOnly: true
     }
-    res.cookie("Token",token, option).status(200).json({
+    res.cookie("shuva",token, option).status(200).json({
       success:true,
       token,
       user,
